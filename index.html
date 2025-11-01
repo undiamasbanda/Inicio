@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Un Día Más | Página Oficial</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/png" href="img/favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar" id="navbar">
+    <div class="logo">
+      <img src="img/logo-rectangular.png" alt="Logo de Un Día Más">
+    </div>
+    <div class="redes-img">
+      <a href="https://facebook.com" target="_blank"><img src="img/redes/facebook.png" alt="Facebook"></a>
+      <a href="https://instagram.com" target="_blank"><img src="img/redes/instagram.png" alt="Instagram"></a>
+      <a href="https://open.spotify.com" target="_blank"><img src="img/redes/spotify.png" alt="Spotify"></a>
+      <a href="https://youtube.com" target="_blank"><img src="img/redes/youtube.png" alt="YouTube"></a>
+    </div>
+  </header>
+
+  <!-- Banner -->
+  <section class="banner">
+    <div class="slider">
+      <div class="slide" style="background-image: url('img/banner1.jpg');"></div>
+      <div class="slide" style="background-image: url('img/banner2.jpg');"></div>
+    </div>
+    <div class="overlay">
+      <h2>¡Bienvenidos!</h2>
+      <p>Aqui podras encontrar todas nuestras redes, fotos y noticias sobre la banda!
+(mucho mas contenido muy pronto)</p>
+
+    </div>
+  </section>
+
+  <!-- Carrusel de fotos -->
+  <section class="galeria-section">
+    <div class="galeria-carrusel" id="galeria">
+      <div class="slide-track" id="slide-track">
+        <img src="img/foto1.jpg" alt="Foto 1">
+        <img src="img/foto2.jpg" alt="Foto 2">
+        <img src="img/foto3.jpg" alt="Foto 3">
+        <img src="img/foto4.jpg" alt="Foto 4">
+        <img src="img/foto5.jpg" alt="Foto 5">
+        <img src="img/foto6.jpg" alt="Foto 6">
+        <!-- Duplicamos para loop infinito -->
+        <img src="img/foto1.jpg" alt="Foto 1">
+        <img src="img/foto2.jpg" alt="Foto 2">
+        <img src="img/foto3.jpg" alt="Foto 3">
+        <img src="img/foto4.jpg" alt="Foto 4">
+        <img src="img/foto5.jpg" alt="Foto 5">
+        <img src="img/foto6.jpg" alt="Foto 6">
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiénes Somos -->
+  <section class="quienes-section">
+    <h1>¿Quiénes somos?</h1>
+    <div class="quienes-container">
+      <img src="img/foto7.jpg" alt="Foto de la banda" class="quienes-img">
+      <p class="quienes-text">
+        Somos Un Día Más, banda de locos creativos con amor enfermo a la música, buscamos dar en el clavo en esa sensación que tenemos todos al escuchar buenas canciones y esperamos lograrlo en cada tema nuestro que tenemos para todos ustedes. Nuestra música es el efecto de lo que somos y vivimos, un reflejo de lo que expresamos y queriendo, a su vez, representar a nuestros oyentes. Funk, Rock, Hard rock, y muchos más géneros los esperan dentro de nuestros temas.
+      </p>
+    </div>
+  </section>
+
+  <!-- Por qué Un Día Más -->
+  <section class="porque-section">
+    <h2>¿Por qué "Un Día Más"?</h2>
+    <p>
+      Un Día Más proviene del sentimiento de no querer parar por más cosas que uno pase, a pesar de los malos ratos, momentos o situaciones que la vida nos atrapa, siempre va a haber Un Día Más para intentarlo, para triunfar, seguir, fracasar y volver a intentar, no importa. Siempre va a haber Un Día Más.
+    </p>
+  </section>
+
+  <!-- Último Lanzamiento -->
+  <section class="ultimo-lanzamiento">
+    <h2>EN POCOS DIAS YA ESTARA DISPONIBLE NUESTRO PRIMER SENCILLO
+"BAD NEWS"</h2>
+    <div class="video-grande">
+
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="logo-footer">
+      <img src="img/logo-rectangular.png" alt="Logo Footer">
+    </div>
+    <div class="redes-img">
+      <a href="https://facebook.com" target="_blank"><img src="img/redes/facebook.png" alt="Facebook"></a>
+      <a href="https://instagram.com" target="_blank"><img src="img/redes/instagram.png" alt="Instagram"></a>
+      <a href="https://open.spotify.com" target="_blank"><img src="img/redes/spotify.png" alt="Spotify"></a>
+      <a href="https://youtube.com" target="_blank"><img src="img/redes/youtube.png" alt="YouTube"></a>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll
+    window.addEventListener("scroll", function () {
+      const navbar = document.getElementById("navbar");
+      navbar.classList.toggle("scroll", window.scrollY > 50);
+    });
+
+    // Carrusel arrastrable
+    const slideTrack = document.getElementById('slide-track');
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const galeria = document.getElementById('galeria');
+
+    galeria.addEventListener('mousedown', (e) => {
+      isDown = true;
+      slideTrack.style.animationPlayState = 'paused';
+      startX = e.pageX - galeria.offsetLeft;
+      scrollLeft = galeria.scrollLeft;
+    });
+
+    galeria.addEventListener('mouseleave', () => {
+      isDown = false;
+      slideTrack.style.animationPlayState = 'running';
+    });
+
+    galeria.addEventListener('mouseup', () => {
+      isDown = false;
+      slideTrack.style.animationPlayState = 'running';
+    });
+
+    galeria.addEventListener('mousemove', (e) => {
+      if(!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - galeria.offsetLeft;
+      const walk = (x - startX) * 2; // velocidad arrastre
+      galeria.scrollLeft = scrollLeft - walk;
+    });
+  </script>
+
+</body>
+</html>
+

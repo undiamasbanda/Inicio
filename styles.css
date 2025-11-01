@@ -1,0 +1,140 @@
+:root {
+  --amarillo: #FFD82B;
+  --fondo: #1a1a1a;
+  --texto-principal: #ffffff;
+  --navbar-bg: #ffffff;
+  --descripcion-bg: #2a2a2a;
+  --fondo-oscuro: #0a0a0a; /* más oscuro para la sección "Por qué Un Día Más" */
+  --fuente: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--fuente);
+  background-color: var(--fondo);
+  color: var(--texto-principal);
+  font-size: 1.5rem;
+}
+
+a { color: inherit; text-decoration: none; }
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--navbar-bg);
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: box-shadow 0.3s ease;
+}
+
+.navbar.scroll { box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+
+.logo img { height: 70px; }
+
+.redes-img {
+  display: flex;
+  gap: 15px;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.redes-img a {
+  display: inline-block;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  width: 50px; height: 50px;
+  transition: transform 0.2s, background-color 0.3s;
+}
+
+.redes-img a:hover {
+  transform: scale(1.1);
+  background-color: var(--amarillo);
+}
+
+.redes-img img { width: 100%; height: 100%; object-fit: contain; }
+
+/* Banner */
+.banner { position: relative; width: 100%; height: 70vh; overflow: hidden; }
+.slider { display: flex; width: 200%; height: 100%; animation: slide 12s infinite linear; }
+.slide { width: 50%; background-size: cover; background-position: center; filter: brightness(0.5); }
+
+@keyframes slide {
+  0%, 45% { transform: translateX(0); }
+  50%, 95% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.overlay {
+  position: absolute; z-index: 2;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  text-align: center; color: var(--amarillo);
+  text-shadow: 2px 2px 10px rgba(0,0,0,0.7);
+}
+
+.overlay h2 { font-size: 4rem; margin-bottom: 20px; }
+.overlay p { font-size: 2rem; margin-bottom: 25px; }
+.boton { background: var(--amarillo); color: #000; padding: 20px 40px; border-radius: 8px; font-weight: bold; font-size: 1.8rem; transition: background 0.3s; }
+.boton:hover { background: #e6c300; }
+
+/* Carrusel */
+.galeria-section { padding: 40px 0; overflow: hidden; }
+.galeria-carrusel { width: 100%; overflow: hidden; position: relative; cursor: grab; }
+.slide-track {
+  display: flex;
+  gap: 20px;
+  animation: scroll 30s linear infinite;
+}
+.slide-track img { height: 250px; width: auto; border-radius: 8px; border: 2px solid #333; }
+
+@keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* Quiénes Somos */
+.quienes-section { padding: 60px 20px; text-align: center; }
+.quienes-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 30px;
+}
+.quienes-img { width: 450px; border-radius: 10px; }
+.quienes-text { max-width: 700px; font-size: 1.8rem; line-height: 1.8; text-align: left; }
+
+/* Por qué Un Día Más */
+.porque-section { padding: 60px 20px; background-color: var(--fondo-oscuro); text-align: center; }
+.porque-section h2 { color: var(--amarillo); margin-bottom: 20px; font-size: 2.5rem; }
+.porque-section p { font-size: 1.5rem; }
+
+/* Último Lanzamiento */
+.ultimo-lanzamiento { padding: 60px 20px; text-align: center; }
+.ultimo-lanzamiento h2 { color: var(--amarillo); margin-bottom: 30px; font-size: 2.5rem; }
+.video-grande iframe { width: 90%; max-width: 900px; height: 500px; border-radius: 8px; }
+
+/* Footer */
+.footer { background-color: var(--navbar-bg); padding: 30px 20px; text-align: center; }
+.logo-footer img { height: 40px; margin-bottom: 15px; }
+.footer .redes-img { position: static; display: flex; justify-content: center; gap: 15px; margin-top: 15px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navbar { flex-direction: column; }
+  .slide-track { animation-duration: 60s; }
+  .video-grande iframe { width: 90%; height: auto; }
+  .redes-img { flex-wrap: wrap; position: static; transform: none; }
+  .quienes-container { flex-direction: column; }
+  .quienes-img { width: 90%; }
+}
+
