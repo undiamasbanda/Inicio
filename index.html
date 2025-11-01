@@ -32,8 +32,7 @@
     <div class="overlay">
       <h2>¡Bienvenidos!</h2>
       <p>Aqui podras encontrar todas nuestras redes, fotos y noticias sobre la banda!
-(mucho mas contenido muy pronto)</p>
-
+      (mucho mas contenido muy pronto)</p>
     </div>
   </section>
 
@@ -47,7 +46,6 @@
         <img src="img/foto4.jpg" alt="Foto 4">
         <img src="img/foto5.jpg" alt="Foto 5">
         <img src="img/foto6.jpg" alt="Foto 6">
-        <!-- Duplicamos para loop infinito -->
         <img src="img/foto1.jpg" alt="Foto 1">
         <img src="img/foto2.jpg" alt="Foto 2">
         <img src="img/foto3.jpg" alt="Foto 3">
@@ -79,10 +77,9 @@
 
   <!-- Último Lanzamiento -->
   <section class="ultimo-lanzamiento">
-    <h2>EN POCOS DIAS YA ESTARA DISPONIBLE NUESTRO PRIMER SENCILLO
-"BAD NEWS"</h2>
+    <h2>EN POCOS DIAS YA ESTARA DISPONIBLE NUESTRO PRIMER SENCILLO "BAD NEWS"</h2>
     <div class="video-grande">
-
+      <!-- Aquí puedes insertar el iframe del videoclip si querés -->
     </div>
   </section>
 
@@ -100,7 +97,7 @@
   </footer>
 
   <script>
-    // Navbar scroll
+    // Navbar con sombra al hacer scroll
     window.addEventListener("scroll", function () {
       const navbar = document.getElementById("navbar");
       navbar.classList.toggle("scroll", window.scrollY > 50);
@@ -111,7 +108,6 @@
     let isDown = false;
     let startX;
     let scrollLeft;
-
     const galeria = document.getElementById('galeria');
 
     galeria.addEventListener('mousedown', (e) => {
@@ -132,10 +128,10 @@
     });
 
     galeria.addEventListener('mousemove', (e) => {
-      if(!isDown) return;
+      if (!isDown) return;
       e.preventDefault();
       const x = e.pageX - galeria.offsetLeft;
-      const walk = (x - startX) * 2; // velocidad arrastre
+      const walk = (x - startX) * 2;
       galeria.scrollLeft = scrollLeft - walk;
     });
   </script>
